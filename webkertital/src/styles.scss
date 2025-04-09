@@ -8,10 +8,42 @@ app-igazolas{
 }
 app-root{
     @include mat.form-field-overrides((
-        filled-container-color: transparent,
-        filled-hover-active-indicator-color: transparent
+        outlined-caret-color: white,
+        outlined-focus-outline-color: white,
+        outlined-focus-label-text-color: white,
+        outlined-label-text-font: 'Montserrat',
+        outlined-outline-color: white,
+        outlined-hover-outline-color: white,
+        outlined-outline-width: 3px,
+        outlined-focus-outline-width: 3px,
+
     ));
+    mat-form-field .mat-mdc-form-field-subscript-wrapper {
+        display: none;
+    }
+    mat-form-field .mat-mdc-form-field-flex{
+        background-color: transparent;
+    }
+    mat-form-field .mat-mdc-text-field-wrapper.mdc-text-field.mdc-text-field--filled{
+        height: 50px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    mat-form-field .mat-mdc-form-field-icon-suffix{
+        padding-left: 0px;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
+    .keresogomb mat-icon{
+        display: flex;
+        justify-content: center;
+        align-items: center;
+        text-align: center;
+    }
 }
+
 
 html, body{
     margin: auto;

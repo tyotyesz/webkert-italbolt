@@ -7,8 +7,8 @@ export interface Felhasznalo{
     telefonszam: string;
     szallitasi_adatok: string;
     admin: boolean;
-    fizetesi_adatok: "kartya" | "utanvet";
-    hirlevelsub: "igen" | "nem";
+    fizetesi_adatok: string;
+    hirlevelsub: string;
 }
 
 export const FelhasznalokObject = [

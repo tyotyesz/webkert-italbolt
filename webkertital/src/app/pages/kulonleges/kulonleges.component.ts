@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Termek, TermekekObject } from '../../shared/models/termekek';
 
 @Component({
   selector: 'app-kulonleges',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './kulonleges.component.scss'
 })
 export class KulonlegesComponent {
-
+  TermekObject = TermekekObject;
 }

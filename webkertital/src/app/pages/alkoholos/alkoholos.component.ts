@@ -1,4 +1,5 @@
 import { Component } from '@angular/core';
+import { Termek, TermekekObject } from '../../shared/models/termekek';
 
 @Component({
   selector: 'app-alkoholos',
@@ -7,5 +8,5 @@ import { Component } from '@angular/core';
   styleUrl: './alkoholos.component.scss'
 })
 export class AlkoholosComponent {
-
+  TermekObject = TermekekObject;
 }

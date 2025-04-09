@@ -7,8 +7,8 @@ import { MatListModule } from '@angular/material/list';
 import { Felhasznalo, FelhasznalokObject } from './shared/models/felhasznalok';
 import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
-import { MatToolbarModule } from '@angular/material/toolbar';
 import { MatInputModule } from '@angular/material/input';
+import { FelhasznaloService } from './shared/services/felhasznalo.service';
 
 @Component({
   selector: 'app-root',
@@ -19,32 +19,21 @@ import { MatInputModule } from '@angular/material/input';
     RouterLink,
     MatIconModule,
     MatFormFieldModule,
-    MatToolbarModule,
     MatInputModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'
 })
 export class AppComponent {
-  FelhasznalokObject = FelhasznalokObject;
-  constructor(private router: Router) {}
+  constructor(private router: Router, private felhasznaloService: FelhasznaloService) {}
   isFomenuRoute(){
-    return this.router.url === '/fomenu' || 
-    this.router.url === '/alkoholos' || 
-    this.router.url === '/uditok' || 
-    this.router.url === '/kulonleges' ||
-    this.router.url === '/receptek';
+    return this.router.url !== '/igazolas';
   }
+  
   isLoggedIn(): boolean {
-    const user = localStorage.getItem('felhasznalo');
-    return user !== null;
+    return this.felhasznaloService.isLoggedIn();
   }
   isAdmin(): boolean {
-    const user = localStorage.getItem('felhasznalo');
-    if (user) {
-      const felhasznalo: Felhasznalo = JSON.parse(user);
-      return felhasznalo.admin;
-    }
-    return false;
+    return this.felhasznaloService.isAdmin();
   }
 }

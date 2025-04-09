@@ -1,1 +1,26 @@
-<p>uditok works!</p>
+<main class="alkeszitalok" id="alkeszitalok">
+    <h1 class="heading">Üditő <span> Italok</span></h1>
+      <div class="box-container">
+        @for (item of TermekObject; track $index) {
+            @if(item.kategoria === 'uditok'){
+                <div class="box">
+                    <div class="kep">
+                        <img src="{{item.kepeleres}}" alt="{{item.termeknev}}">
+                        <!--<?php if($islogged): ?>
+                            <div class="icon">
+                                <form action="php/kosarhozad.php" method="post" style="width: 100%;">
+                                    <input type="hidden" name="termekekid" value="<?=$uditok["id"]?>" >
+                                    <button><i class="fas fa-shopping-basket"></i></button>
+                                </form>
+                            </div>
+                        <?php endif; ?>-->
+                    </div>
+                    <div class="italok">
+                        <h3>{{item.termeknev}}</h3>
+                        <div class="ar">{{item.termekara}} Ft</div>
+                    </div>
+                </div>
+            }
+        }
+    </div>
+  </main>

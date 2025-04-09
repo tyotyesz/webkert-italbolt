@@ -12,11 +12,11 @@
                     </div>
                 </div>
                     <div class="searching-bar">
-                        <mat-form-field class="form-search">
+                        <mat-form-field class="form-search" appearance="outline">
                             <mat-label>Keresés</mat-label>
-                            <input matInput type="search" name="kereses">
+                            <input matInput type="search" name="kereses" >
                             <button class="keresogomb" mat-icon-button matSuffix>
-                                <mat-icon>search</mat-icon>
+                                <mat-icon style="font-size: 24px;">search</mat-icon>
                             </button>
                         </mat-form-field>
                         <!--<form action="kereses.php" method="get">
@@ -51,18 +51,18 @@
                 </div>
                 <div class="login-header">
                     @if(isLoggedIn()){
-                        <a mat-list-item routerLink="/profil" routerLinkActive="activate-list-item"><i class="fas fa-user-alt"></i></a>
+                        <a mat-list-item routerLink="/profil" routerLinkActive="activate-list-item"><mat-icon class="large-icon">account_circle</mat-icon></a>
                     }
                     @else {
-                        <a mat-list-item routerLink="/bejelentkezes" routerLinkActive="activate-list-item"><i class="fas fa-user-alt"></i></a>
+                        <a mat-list-item routerLink="/bejelentkezes" routerLinkActive="activate-list-item"><mat-icon class="large-icon">account_circle</mat-icon></a>
                     }
                 </div>
                 <div class="cart-header">
-                    <a href="kosar.php"><i class="fas fa-shopping-basket"></i></a>
+                    <a mat-list-item routerLink="/kosar" routerLinkActive="activate-list-item"><mat-icon class="large-icon">shopping_bag</mat-icon></a>
                 </div>
                 @if(isAdmin()){
                     <div class="cart-header">
-                        <a href="admin.php"><i class="fa-solid fa-plus"></i></a>
+                        <a mat-list-item routerLink="/admin" routerLinkActive="activate-list-item"><mat-icon class="large-icon">crown</mat-icon></a>
                     </div>
                 }
             </div>
@@ -88,11 +88,11 @@
                 <h2>Elérhetőségek</h2>
                 <ul>
                     <li>Közpönti telefonos ügyfélszolgálat<br>Hétköznap: 8:00-16:00</li>
-                    <li><i class="fas fa-phone i_id"></i> <a href="tel:+4206969420">+42 0 6969 420</a> </li>
+                    <li><mat-icon class="telefonos">call</mat-icon> <a href="tel:+4206969420">+42 0 6969 420</a> </li>
                     <li>Mobilos ügyfélszolgálat<br>Hétköznap: 8:00-16:00</li>
-                    <li><i class="fas fa-phone i_id"></i> <a href="tel:+36306969696">+36 30 696 9696</a></li>
+                    <li><mat-icon class="telefonos">call</mat-icon> <a href="tel:+36306969696">+36 30 696 9696</a></li>
                     <li>E-mail címünk:</li>
-                    <li><i class="fas fa-envelope i_id"></i><a href="mailto:h378025@stud.u-szeged.hu">h378025(kukac)stud.u-szeged.hu</a></li>
+                    <li><mat-icon class="telefonos">mail</mat-icon><a href="mailto:h378025@stud.u-szeged.hu">h378025&#64;stud.u-szeged.hu</a></li>
                 </ul>
             </div>
             <div class="footer-kozep">
