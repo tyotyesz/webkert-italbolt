@@ -1,8 +1,25 @@
-html, body{
-    margin: 0;
-    padding: 0;
-    height: 100%;
+@use '@angular/material' as mat;
+
+app-igazolas{
+    @include mat.button-overrides((
+        filled-container-color: #ff9966,
+        filled-label-text-color: #000000
+    ));
+}
+app-root{
+    @include mat.form-field-overrides((
+        filled-container-color: transparent,
+        filled-hover-active-indicator-color: transparent
+    ));
 }
 
-html, body { height: 100%; }
-body { margin: 0; font-family: Roboto, "Helvetica Neue", sans-serif; }
+html, body{
+    margin: auto;
+    padding: auto;
+    height: 100%;
+    font-family: 'Montserrat', sans-serif;
+}
+
+
+
+

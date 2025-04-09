@@ -1,1 +1,73 @@
-<p>fomenu works!</p>
+<main class="termekek" id="termekek">
+    <div class="kiscsavo">
+        <fieldset>
+            <legend>Akciós Italaink</legend>
+            <div class="box-container">
+            @for (item of TermekekObject; track $index) {
+                <div class="box">
+                    <img src="{{item.kepeleres}}" alt="{{item.termeknev}}">
+                    <p>{{item.termeknev}}</p>
+                    <span class="elozo-ar">{{item.termekara}} Ft</span>
+                    <span class="akcios-ar">{{item.akciosAr}} Ft</span>
+                    <br>
+                    <input type="hidden" name="termekekid" value="{{item.id}}" >
+                </div>
+            }
+            <!--<?php $mysqli = require __DIR__ . "/php/adatbazis.php";
+              $sql = "SELECT * FROM products WHERE fooldalon = 'akcios'";
+              $result = $mysqli->query($sql);
+              while($fooldalakcios = $result->fetch_assoc()):?>
+              <form action="php/kosarhozad.php" method="post">
+              <div class="box">
+                    <img src="<?=$fooldalakcios["kepeleres"]?>" alt="<?=$fooldalnepszeru["termeknev"]?>">
+                    <p><?=$fooldalakcios["termeknev"]?></p>
+                    <span class="elozo-ar">499 Ft</span>
+                    <span class="akcios-ar"><?=$fooldalakcios["termekara"]?> Ft</span>
+                    <br>
+                    <input type="hidden" name="termekekid" value="<?=$fooldalakcios["id"]?>" >
+                    <?php if($islogged): ?>
+                        <button class="kosarba-gomb">Kosárba</button>
+                    <?php endif; ?>
+                </div>
+              </form>
+            <?php endwhile; ?>--> 
+            </div>
+        </fieldset>
+    </div>
+    <div class="kiscsavo">
+        <fieldset>
+            <legend>Felkapott Italok</legend>
+            <div class="box-container">
+                @for (item of TermekekObject; track $index) {
+                    <div class="box">
+                        <img src="{{item.kepeleres}}" alt="{{item.termeknev}}">
+                        <p>{{item.termeknev}}</p>
+                        <span class="akcios-ar">{{item.termekara}} Ft</span>
+                        <br>
+                        <input type="hidden" name="termekekid" value="{{item.id}}" >
+                    </div>
+                }
+            <!--<?php $mysqli = require __DIR__ . "/php/adatbazis.php";
+              $sql = "SELECT * FROM products WHERE fooldalon = 'nepszeru'";
+              $result = $mysqli->query($sql);
+              while($fooldalnepszeru = $result->fetch_assoc()):?>
+              <form action="php/kosarhozad.php" method="post">
+              <div class="box">
+                    <img src="<?=$fooldalnepszeru["kepeleres"]?>" alt="<?=$fooldalnepszeru["termeknev"]?>">
+                    <p><?=$fooldalnepszeru["termeknev"]?></p>
+                    <span class="akcios-ar"><?=$fooldalnepszeru["termekara"]?> Ft</span>
+                    <br>
+                    <input type="hidden" name="termekekid" value="<?=$fooldalnepszeru["id"]?>" >
+                    <?php if($islogged): ?>
+                        <button class="kosarba-gomb">Kosárba</button>
+                    <?php endif; ?>
+
+
+
+                </div>
+              </form>
+            <?php endwhile; ?>--> 
+            </div>
+        </fieldset>
+    </div>
+</main>
