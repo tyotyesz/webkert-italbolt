@@ -1,1 +1,102 @@
-<p>profil works!</p>
+<main>
+    @if(isLoggedIn()){
+        <div class="bejeli">
+            <div class="wrapper">
+                <h2>Személyes adatok</h2>
+                    <hr>
+                <div class="szokoz">
+                    <form action="php/edit_profil.php" method="post">
+                        <p>Vezetéknév: <input type="text" name="vezeteknev" value="{{getVezeteknev()}}"></p>
+                        <!--<?php if (isset($_SESSION["error1"])): ?>
+                            <p class="error" style="color: red">Kérjük adja meg a vezetéknevét!</p>
+                            <br>
+                            <?php unset($_SESSION["error1"]); ?>
+                        <?php endif; ?>-->
+                        <p>Keresztnév: <input type="text" name="keresztnev" value="{{getKeresztnev()}}"></p>
+                        <!--<?php if (isset($_SESSION["error2"])): ?>
+                            <p class="error" style="color: red">Kérjük adja meg a keresztnevét!</p>
+                            <br>
+                            <?php unset($_SESSION["error2"]); ?>
+                        <?php endif; ?>-->
+                        <p>E-mail cím: <input type="text" name="emailcim" value="{{getEmail()}}"></p>
+                        <!--<?php if (isset($_SESSION["error3"])): ?>
+                            <p class="error" style="color: red">Kérjük adja meg az email címét!</p>
+                            <br>
+                            <?php unset($_SESSION["error3"]); ?>
+                        <?php endif; ?>-->
+                        <!--<?php if (isset($_SESSION["error4"])): ?>
+                            <p class="error" style="color: red">Kérjük adjon meg egy érvényes email címet!</p>
+                            <br>
+                            <?php unset($_SESSION["error4"]); ?>
+                        <?php endif; ?>
+                        <?php if (isset($_SESSION["error_email_exists"])): ?>
+                            <p class="error" style="color: red">Ez az email cím már foglalt!</p>
+                            <br>
+                            <?php unset($_SESSION["error_email_exists"]); ?>
+                        <?php endif; ?>-->
+                        <p>Telefonszám: <input type="text" name="telefonszam" value="{{getTelefonszam()}}"></p>
+                        <!--<?php if (isset($_SESSION["error5"])): ?>
+                            <p class="error" style="color: red">Kérjük adja meg a telefonszámát!</p>
+                            <br>
+                            <?php unset($_SESSION["error5"]); ?>
+                        <?php endif; ?>-->
+                        <div class="gomb">
+                            <button>Módosítás</button>
+                        </div>
+                    </form>
+                        <hr>
+                        <div class="jelszobox">
+                            <h3>Jelszó módosítása <a href="jelszo_modositas.php"><i class="fa-solid fa-pen"></i></a></h3>
+                        </div>
+                        <!--<div class="szallitasi-adatok">
+                            <h3><?php if($user["hirlevelsub"] == "igen"):?>Hírlevélre feliratkozva<a href="php/hirlevel_eltavolitas.php"><i class="fa fa-check"></i></a><?php else: ?>Hírlevél feliratkozás<a href="php/hirlevel_hozzadas.php"><i class="fa-solid fa-plus"></i></a><?php endif; ?></h3>
+                        </div>-->
+                        <hr>
+                        <div class="szallitasi-adatok">
+                            <!--<h3>Szállítási adatok<?php if($user["szallitasi_adatok"] != NULL):?><a href="php/szallitas_eltavolitas.php"><i class="fa-solid fa-minus"></i></a><?php else: ?><a href="szallitas_hozzadas.php"><i class="fa-solid fa-plus"></i></a><?php endif; ?></h3>
+                            <?php if($user["szallitasi_adatok"]): ?>
+                                <p><?= $user["szallitasi_adatok"] ?></p>
+                                <p>Szeged</p>
+                                <p>6700</p>
+                                <br>
+                            <?php else: ?>
+                                <p>Még nincs megadva szállítási adat!</p>
+                                <br>
+                            <?php endif; ?>-->
+                        </div>
+                        <div class="szallitasi-adatok">
+                            <!--<h3>Fizetési adatok<?php if($user["fizetesi_adatok"] != NULL):?><a href="php/fizetes_eltavolitas.php"><i class="fa-solid fa-minus"></i></a><?php else: ?><a href="fizetes_hozzadas.php"><i class="fa-solid fa-plus"></i></a><?php endif; ?></h3>
+                            <?php if($user["fizetesi_adatok"]): ?>
+                                <p>Utánvét (készpénzzel)</p>
+                                <br>
+                            <?php else: ?>
+                                <p>Még nincs megadva fizetési adat!</p>
+                                <br>
+                            <?php endif; ?>-->
+                        </div>
+                        <hr>
+                        <div class="kijelentkezes">
+                            <form action="php/kijelentkezes.php">
+                                <button>Kijelentkezés</button>
+                            </form>
+                            @if(!isAdmin()){
+                                <form action="php/fiok_torles.php">
+                                    <button>Fiók törlése</button>
+                                </form>
+                            }
+                        </div>
+                </div>
+            </div>
+        </div>
+    }
+    @else {
+        <div class="hibasvalami">
+            <div class="azthiszemez">
+                <h2>Hoppáré!</h2>
+                <p>Hogyha meg szeretnéd tekinteni a fiókod, akkor jelentkezzen be!</p>
+                <br>
+                <a href="bejelentkezes.php">Kattints ide a bejelentkezéshez!</a>
+            </div>
+        </div>
+    }
+</main>

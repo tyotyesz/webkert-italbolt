@@ -141,11 +141,7 @@ body {
     display: none;
   
   }
-  .invalid{
-    text-align: center !important;
-    color: red !important;
-    font-size: 0.8rem !important;
-  }
+  
   @media (max-width: 768px) {
     .header-kozepen .header-valami .header-kozep-sor .login-header{
       display: none;
@@ -222,6 +218,7 @@ body {
       position: fixed;
       width: 100%;
       margin-top: 0;
+      z-index: 1000;
     }
     .header-kozepen .header-valami .header-kozep-sor .logo-header .mobil-logo{
       display: flex;

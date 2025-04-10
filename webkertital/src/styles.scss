@@ -43,6 +43,28 @@ app-root{
         text-align: center;
     }
 }
+app-bejelentkezes{
+    @include mat.form-field-overrides((
+        outlined-caret-color: white,
+        outlined-focus-outline-color: white,
+        outlined-focus-label-text-color: white,
+        outlined-label-text-font: 'Montserrat',
+        outlined-outline-color: white,
+        outlined-hover-outline-color: white,
+        outlined-outline-width: 3px,
+        outlined-focus-outline-width: 3px,
+        outlined-label-text-size: 14px,
+        outlined-error-outline-color: red,
+        outlined-error-label-text-color: red,
+        outlined-error-hover-outline-color: white,
+        outlined-error-focus-label-text-color: white,
+        outlined-error-hover-label-text-color: white,
+        outlined-error-focus-outline-color: white
+        
+
+    ));
+    
+}
 
 
 html, body{

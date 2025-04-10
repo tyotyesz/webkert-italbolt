@@ -1,4 +1,4 @@
-export interface Felhasznalo{
+export class Felhasznalo{
     id: number;
     vezeteknev: string;
     keresztnev: string;
@@ -9,9 +9,23 @@ export interface Felhasznalo{
     admin: boolean;
     fizetesi_adatok: string;
     hirlevelsub: string;
+
+    static felhaszId = 4;
+    constructor(id: number, vezeteknev: string, keresztnev: string, email: string, jelszo: string, telefonszam: string, szallitasi_adatok: string, admin: boolean, fizetesi_adatok: string, hirlevelsub: string) {
+        this.id = id;
+        this.vezeteknev = vezeteknev;
+        this.keresztnev = keresztnev;
+        this.email = email;
+        this.jelszo = jelszo;
+        this.telefonszam = telefonszam;
+        this.szallitasi_adatok = szallitasi_adatok;
+        this.admin = admin;
+        this.fizetesi_adatok = fizetesi_adatok;
+        this.hirlevelsub = hirlevelsub;
+    }
 }
 
-export const FelhasznalokObject = [
+export const FelhasznalokObject: Felhasznalo[] = [
     {
         id: 1,
         vezeteknev: "Kiss",

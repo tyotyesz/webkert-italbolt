@@ -3,21 +3,21 @@
     <div class="bejeli">
         <div class="wrapper">
             <h2>Bejelentkezés</h2>
-            @if(invalid){
+            @if(loginError){
                 <div class="invalid">
                     <p>Hibás email cím vagy jelszó!</p>
                 </div>
             }
-            <form [formGroup]="loginForm" (ngSubmit)="onSubmit()">
-                <mat-form-field>
+            <form [formGroup]="loginForm" (ngSubmit)="login()">
+                <mat-form-field appearance="outline">
                     <mat-label>E-mail cím</mat-label>
-                    <input matInput type="email" formControlName="email"/>
+                    <input matInput type="email" formControlName="email" required="true"/>
                 </mat-form-field>
-                <mat-form-field>
+                <mat-form-field appearance="outline">
                     <mat-label>Jelszó</mat-label>
-                    <input matInput type="password" formControlName="password"/>
+                    <input matInput type="password" formControlName="jelszo" required="true"/>
                 </mat-form-field>
-                <button mat-flat-button type="submit">Bejelentkezés</button>
+                <button mat-flat-button>Bejelentkezés</button>
                 <div class="member">
                     Még nincs fiókod?
                     <br>

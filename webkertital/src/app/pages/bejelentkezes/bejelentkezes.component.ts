@@ -3,47 +3,62 @@ import { FelhasznaloService } from '../../shared/services/felhasznalo.service';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { FormGroup, FormsModule } from '@angular/forms';
+import { EmailValidator, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
 
 @Component({
   selector: 'app-bejelentkezes',
-  imports: [MatFormFieldModule, MatInputModule, ReactiveFormsModule, FormsModule, MatButtonModule],
+  imports: [
+    MatFormFieldModule,
+    MatInputModule,
+    ReactiveFormsModule,
+    FormsModule, 
+    MatButtonModule
+  ],
   templateUrl: './bejelentkezes.component.html',
   styleUrl: './bejelentkezes.component.scss'
 })
 export class BejelentkezesComponent {
   loginForm!: FormGroup;
-  email: string = '';
-  jelszo: string = '';
-  invalid: boolean = false;
+  loginError = false;
+  constructor(
+    private formBuilder: FormBuilder,
+    private felhasznaloServie: FelhasznaloService,
+    private router: Router
+  ) {}
 
-  constructor(private felhasznaloService: FelhasznaloService, private router: Router) { }
+  ngOnInit(): void{
+    this.inic();
+  }
 
-  isLoggedIn(): boolean {
-    return this.felhasznaloService.isLoggedIn();
+  inic() {
+    this.loginForm = this.formBuilder.group({
+      email:['', [Validators.email]],
+      jelszo:['', [Validators.minLength(8)]]
+    });
   }
-  isAdmin(): boolean {
-    return this.felhasznaloService.isAdmin();    
-  }
-  isInvalid(): boolean {
-    const felhasznalo = this.felhasznaloService.getFelhasznaloByEmail(this.email);
-    if (!felhasznalo || felhasznalo.jelszo !== this.jelszo) {
-      this.invalid = true;
-      return true;
+
+  login(): void{
+    if(this.loginForm.valid){
+      const {email, jelszo} = this.loginForm.value;
+      for(let i = 0; i < this.felhasznaloServie.getFelhasznalok().length; i++){
+        if(this.felhasznaloServie.getFelhasznalok()[i].jelszo == jelszo && this.felhasznaloServie.getFelhasznalok()[i].email == email){
+          this.felhasznaloServie.setFelhasznalo(this.felhasznaloServie.getFelhasznalok()[i]);
+          this.loginForm.reset();
+          this.router.navigate(['/fomenu']);
+          break;
+        }
+      }
+    }else{
+      this.loginError = true;
+      return;
     }
-    this.invalid = false;
-    return false;
   }
-  onSubmit(): void {
-    const isValid = this.felhasznaloService.validateUser(this.email, this.jelszo);
-    if (isValid) {
-      this.invalid = false;
-      this.router.navigate(['/fomenu']); // Sikeres bejelentkezés után átirányítás
-    } else {
-      this.invalid = true;
-    }
+
+  isLoggedIn(): boolean{
+    return this.felhasznaloServie.isLogged();
   }
+
 }
