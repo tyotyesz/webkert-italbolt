@@ -12,6 +12,8 @@ import { ProfilComponent } from './pages/profil/profil.component';
 import { KosarComponent } from './pages/kosar/kosar.component';
 import { RegisztracioComponent } from './pages/regisztracio/regisztracio.component';
 import { AdminComponent } from './pages/admin/admin.component';
+import { JelszomodositasComponent } from './pages/jelszomodositas/jelszomodositas.component';
+import { SzallitasiadatokComponent } from './pages/szallitasiadatok/szallitasiadatok.component';
 
 export const routes: Routes = [
     { path: '', redirectTo: 'igazolas', pathMatch: 'full',},
@@ -23,9 +25,12 @@ export const routes: Routes = [
     { path: 'receptek', component: ReceptekComponent},
     { path: 'bejelentkezes', component: BejelentkezesComponent},
     { path: 'profil', component: ProfilComponent},
+    { path: 'jelszomodositas', component: JelszomodositasComponent },
+    { path: 'szallitasiadatok', component: SzallitasiadatokComponent},
     { path: 'regisztracio', component: RegisztracioComponent},
     { path: 'kosar', component: KosarComponent},
     { path: 'admin', component: AdminComponent},
+    
 ];
 
 @NgModule({

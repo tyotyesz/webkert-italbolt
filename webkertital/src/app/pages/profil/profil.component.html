@@ -5,64 +5,70 @@
                 <h2>Személyes adatok</h2>
                     <hr>
                 <div class="szokoz">
-                    <form action="php/edit_profil.php" method="post">
-                        <p>Vezetéknév: <input type="text" name="vezeteknev" value="{{getVezeteknev()}}"></p>
-                        <!--<?php if (isset($_SESSION["error1"])): ?>
-                            <p class="error" style="color: red">Kérjük adja meg a vezetéknevét!</p>
-                            <br>
-                            <?php unset($_SESSION["error1"]); ?>
-                        <?php endif; ?>-->
-                        <p>Keresztnév: <input type="text" name="keresztnev" value="{{getKeresztnev()}}"></p>
-                        <!--<?php if (isset($_SESSION["error2"])): ?>
-                            <p class="error" style="color: red">Kérjük adja meg a keresztnevét!</p>
-                            <br>
-                            <?php unset($_SESSION["error2"]); ?>
-                        <?php endif; ?>-->
-                        <p>E-mail cím: <input type="text" name="emailcim" value="{{getEmail()}}"></p>
-                        <!--<?php if (isset($_SESSION["error3"])): ?>
-                            <p class="error" style="color: red">Kérjük adja meg az email címét!</p>
-                            <br>
-                            <?php unset($_SESSION["error3"]); ?>
-                        <?php endif; ?>-->
-                        <!--<?php if (isset($_SESSION["error4"])): ?>
-                            <p class="error" style="color: red">Kérjük adjon meg egy érvényes email címet!</p>
-                            <br>
-                            <?php unset($_SESSION["error4"]); ?>
-                        <?php endif; ?>
-                        <?php if (isset($_SESSION["error_email_exists"])): ?>
-                            <p class="error" style="color: red">Ez az email cím már foglalt!</p>
-                            <br>
-                            <?php unset($_SESSION["error_email_exists"]); ?>
-                        <?php endif; ?>-->
-                        <p>Telefonszám: <input type="text" name="telefonszam" value="{{getTelefonszam()}}"></p>
-                        <!--<?php if (isset($_SESSION["error5"])): ?>
-                            <p class="error" style="color: red">Kérjük adja meg a telefonszámát!</p>
-                            <br>
-                            <?php unset($_SESSION["error5"]); ?>
-                        <?php endif; ?>-->
+                    <form [formGroup]="profilForm" (ngSubmit)="updateProfile()" >
+                        <mat-form-field appearance="outline">
+                            <mat-label>Vezetéknév</mat-label>
+                            <input matInput type="text" formControlName="vezeteknev"/>
+                            @if(UresVezeteknev){
+                                <mat-error>Kérjük adja meg a vezetéknevét!</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Keresztnév</mat-label>
+                            <input matInput type="text" formControlName="keresztnev"/>
+                            @if(UresKeresztnev){
+                                <mat-error>Kérjük adja meg a keresztnevét!</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>E-mail cím</mat-label>
+                            <input matInput type="email" formControlName="emailcim" />
+                            @if(UresEmail){
+                                <mat-error>Ez az email cím már foglalt!</mat-error>
+                            }
+                        </mat-form-field>
+                        <mat-form-field appearance="outline">
+                            <mat-label>Telefonszám</mat-label>
+                            <input matInput type="text" formControlName="telefonszam" />
+                        </mat-form-field>
                         <div class="gomb">
-                            <button>Módosítás</button>
+                            <button mat-flat-button style="background-color: grey;">Módosítás</button>
                         </div>
                     </form>
                         <hr>
-                        <div class="jelszobox">
-                            <h3>Jelszó módosítása <a href="jelszo_modositas.php"><i class="fa-solid fa-pen"></i></a></h3>
+                        <div class="szallitasi-adatok">
+                            <h3>
+                                <div class="hirlevel-container">
+                                    Jelszó módosítása <button mat-flat-button (click)="updatePassword()">Módosítás</button>
+                                </div>
+                            </h3>
                         </div>
-                        <!--<div class="szallitasi-adatok">
-                            <h3><?php if($user["hirlevelsub"] == "igen"):?>Hírlevélre feliratkozva<a href="php/hirlevel_eltavolitas.php"><i class="fa fa-check"></i></a><?php else: ?>Hírlevél feliratkozás<a href="php/hirlevel_hozzadas.php"><i class="fa-solid fa-plus"></i></a><?php endif; ?></h3>
-                        </div>-->
+                        <div class="szallitasi-adatok">
+                            <h3>
+                                <div class="hirlevel-container">
+                                    @if(getHirlevelsub()){
+                                        Hírlevélre feliratkozva<button mat-flat-button (click)="HirlevelEltavolit()">Eltávolítás</button>
+                                    }@else {
+                                        Hírlevél feliratkozás<button mat-flat-button (click)="HirlevelHozzaad()">Feliratkozás</button>
+                                    }
+                                </div>
+                            </h3>
+                        </div>
                         <hr>
                         <div class="szallitasi-adatok">
-                            <!--<h3>Szállítási adatok<?php if($user["szallitasi_adatok"] != NULL):?><a href="php/szallitas_eltavolitas.php"><i class="fa-solid fa-minus"></i></a><?php else: ?><a href="szallitas_hozzadas.php"><i class="fa-solid fa-plus"></i></a><?php endif; ?></h3>
-                            <?php if($user["szallitasi_adatok"]): ?>
-                                <p><?= $user["szallitasi_adatok"] ?></p>
-                                <p>Szeged</p>
-                                <p>6700</p>
-                                <br>
-                            <?php else: ?>
-                                <p>Még nincs megadva szállítási adat!</p>
-                                <br>
-                            <?php endif; ?>-->
+                            <h3>
+                                <div class="hirlevel-container">
+                                    @if(getSzallitasiAdatok() !== ''){
+                                        Szállítási adatok <button mat-flat-button (click)="SzallitasEltavolit()">Eltávolítás</button>
+                                        <p>{{getSzallitasiAdatok()}} Szeged 6700</p>
+                                        <br>
+                                    }@else {
+                                        Szállítási adatok <button mat-flat-button (click)="SzallitasHozzaad()">Hozzáadás</button>
+                                        <p>Még nincs megadva szállítási adat!</p>
+                                        <br>
+                                    }
+                                </div>
+                            </h3>
                         </div>
                         <div class="szallitasi-adatok">
                             <!--<h3>Fizetési adatok<?php if($user["fizetesi_adatok"] != NULL):?><a href="php/fizetes_eltavolitas.php"><i class="fa-solid fa-minus"></i></a><?php else: ?><a href="fizetes_hozzadas.php"><i class="fa-solid fa-plus"></i></a><?php endif; ?></h3>
@@ -76,14 +82,10 @@
                         </div>
                         <hr>
                         <div class="kijelentkezes">
-                            <form action="php/kijelentkezes.php">
-                                <button>Kijelentkezés</button>
-                            </form>
-                            @if(!isAdmin()){
-                                <form action="php/fiok_torles.php">
-                                    <button>Fiók törlése</button>
-                                </form>
-                            }
+                            <button class="kijelibutton" mat-flat-button (click)="kijelentkezes()">Kijelentkezés</button>
+                            <!--@if(!isAdmin()){
+                                <button class="kijelibutton" mat-flat-button (click)="deleteAccount()">Fiók törlése</button>
+                        }-->
                         </div>
                 </div>
             </div>

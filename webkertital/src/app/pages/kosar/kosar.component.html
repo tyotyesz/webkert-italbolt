@@ -1,1 +1,85 @@
-<p>kosar works!</p>
+<main>
+    @if (!isLoggedIn()){
+        <div class="hibasvalami">
+            <div class="azthiszemez">
+                <h2>Hoppáré!</h2>
+                <p>A rendelések megtekintésehez kérjük jelentkezzen be!</p>
+                <a mat-list-item routerLink="/bejelentkezes" routerLinkActive="activate-list-item">Kattints ide a bejelentkezéshez!</a>   
+            </div>
+        </div>
+    }@else {
+        @for (item of kosarMennyiseg; track $index) {
+            @if(item.mennyitermek === 0){
+                <div class="hibasvalami">
+                    <div class="azthiszemez">
+                        <h2>Hoppáré!</h2>
+                        <p>A kosarad üres!</p>
+                        <a href="fooldal.php">Kattints ide a vásárláshoz!</a>   
+                    </div>
+                </div>
+            }
+            @else {
+                <div class="kosarka">
+                    <div class="kosar-oldal">
+                        <table>
+                            <tr>
+                                <th>Termék</th>
+                                <th>Mennyiség</th>
+                                <th>Egységár</th>
+                            </tr>
+                        <!--@for (item of items; track $index) {
+                            <tr>
+                                <td>
+                                    <div class="kosar-info">
+                                        <img src="<?=$kosarkam["kepelerese"]?>" alt="<?=$kosarkam["termeknev"]?>"> 
+                                        <div>
+                                            <p><?=$kosarkam["termeknev"]?></p>
+                                            <small>Ár: <?=$kosarkam["termekara"]?> Ft</small><br>
+                                            <form action="php/kosartorol.php" method="post">
+                                                <input type="hidden" name="kosartorlesid" value="<?=$kosarkam["id"]?>">
+                                                <button type="submit">Törlés</button>
+                                            </form>
+                                        </div>
+                                    </div>
+                                </td>
+                                <td>
+                                    <form action="php/kosarfrissit.php" method="post">
+                                        <input type="number" name="kosarmennyitermek" value="<?=$kosarkam["mennyi"]?>" min="0">
+                                        <input type="hidden" name="kosaridtermek" value="<?=$kosarkam["id"]?>">
+                                        <button type="submit" hidden></button>
+                                    </form>
+                                </td>
+                                <td><?=$kosarkam["termekara"]*$kosarkam["mennyi"]?> Ft</td>
+                            </tr>
+                        }-->    
+                        </table>
+                        <!--<?php $mysqli = require __DIR__ . "/php/adatbazis.php";
+                          $sql = "SELECT SUM(termekara*mennyi) AS osszeg, SUM(termekara * 0.27 * mennyi) AS afa FROM cart WHERE user_id = ". $_SESSION["user_id"];
+                          $result = $mysqli->query($sql);
+                          $osszeg = $result->fetch_assoc();?>
+                        <div class="teljes-osszeg">
+                
+                        <table>
+                            <tr>
+                                <td>Összeg</td>
+                                <td><?=$osszeg["osszeg"]?> Ft</td>
+                            </tr>
+                            <tr>
+                                <td>Áfa Összeg</td>
+                                <td><?=$osszeg["afa"]?> Ft</td>
+                            </tr>
+                            <tr>
+                                <td>Összesen</td>
+                                <td><?= round($osszeg["osszeg"] + $osszeg["afa"]) ?> Ft</td>
+                            </tr>
+                        </table>
+                        </div>-->
+                
+                    </div>
+                </div>
+            }
+        }
+            
+    }
+            
+</main>

@@ -5,31 +5,26 @@
             <div class="header-kozep-sor">
                 <div class="logo-header">
                     <div class="full-size">
-                        <a mat-list-item routerLink="/fomenu" routerLinkActive="activate-list-item"><img src="../assets/img/sztelogoxd.png" alt="Ha ezt megtalálod ügyi vagy:D"></a>
+                        <a mat-list-item routerLink="/fomenu" routerLinkActive="activate-list-item"><img mat-card-image src="../assets/img/sztelogojo.png" alt="Ha ezt megtalálod ügyi vagy:D"></a>
                     </div>
                     <div class="mobil-logo">
-                        <a mat-list-item routerLink="/fomenu" routerLinkActive="activate-list-item"><img src="../assets/img/logouj.png" alt="Ha ezt megtalálod ügyi vagy:D"></a>
+                        <a mat-list-item routerLink="/fomenu" routerLinkActive="activate-list-item"><img mat-card-image src="../assets/img/logouj.png" alt="Ha ezt megtalálod ügyi vagy:D"></a>
                     </div>
                 </div>
                     <div class="searching-bar">
                         <mat-form-field class="form-search" appearance="outline">
                             <mat-label>Keresés</mat-label>
-                            <input matInput type="search" name="kereses" >
+                            <input matInput type="search" name="kereses" />
                             <button class="keresogomb" mat-icon-button matSuffix>
                                 <mat-icon style="font-size: 24px;">search</mat-icon>
                             </button>
                         </mat-form-field>
-                        <!--<form action="kereses.php" method="get">
-                            <input name="kereses" type="search" class="rounded-transparent-input" placeholder="Keresés">
-                            <button class="keresogomb"><i class="fas fa-search" style="color: white;"></i></button>
-                        </form>-->
-                    </div>   
-                
+                    </div>  
                 <div class="top-nav2">
                     <div class="hamburger-kategoriak">
                         <input id="menu-toggle" type="checkbox">
                         <label class='menu-button-container' for="menu-toggle">
-                            <i class="fas fa-bars"></i>
+                            <mat-icon class="large-icon">menu</mat-icon>
                         </label>
                         <ul class="header-ul">
                             <li><a mat-list-item routerLink="/uditok" routerLinkActive="activate-list-item">Üdítők</a></li>

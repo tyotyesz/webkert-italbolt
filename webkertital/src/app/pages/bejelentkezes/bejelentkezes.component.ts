@@ -3,7 +3,7 @@ import { FelhasznaloService } from '../../shared/services/felhasznalo.service';
 import { Router } from '@angular/router';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
-import { EmailValidator, FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
+import { FormBuilder, FormGroup, FormsModule, Validators } from '@angular/forms';
 import { ReactiveFormsModule } from '@angular/forms';
 import { MatButtonModule } from '@angular/material/button';
 
@@ -35,8 +35,8 @@ export class BejelentkezesComponent {
 
   inic() {
     this.loginForm = this.formBuilder.group({
-      email:['', [Validators.email]],
-      jelszo:['', [Validators.minLength(8)]]
+      email:['', Validators.email],
+      jelszo:['', Validators.minLength(8)]
     });
   }
 

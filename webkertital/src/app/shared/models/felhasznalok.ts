@@ -33,7 +33,7 @@ export const FelhasznalokObject: Felhasznalo[] = [
         email: "janos.kiss@example.com",
         jelszo: "jelszo123",
         telefonszam: "+36123456789",
-        szallitasi_adatok: "1234 Budapest, Fo utca 1.",
+        szallitasi_adatok: "Fo utca 1.",
         admin: true,
         fizetesi_adatok: "kartya",
         hirlevelsub: "igen"
@@ -46,7 +46,7 @@ export const FelhasznalokObject: Felhasznalo[] = [
         email: "anna.nagy@example.com",
         jelszo: "jelszo456",
         telefonszam: "+36123456780",
-        szallitasi_adatok: "5678 Budapest, Bar utca 2.",
+        szallitasi_adatok: "Bar utca 2.",
         admin: false,
         fizetesi_adatok: "utanvet",
         hirlevelsub: "nem"
@@ -59,7 +59,7 @@ export const FelhasznalokObject: Felhasznalo[] = [
         email: "peter.szabo@example.com",
         jelszo: "jelszo789",
         telefonszam: "+36123456781",
-        szallitasi_adatok: "9101 Budapest, Kert utca 3.",
+        szallitasi_adatok: "Kert utca 3.",
         admin: false,
         fizetesi_adatok: "kartya",
         hirlevelsub: "igen"

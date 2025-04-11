@@ -6,6 +6,7 @@ import { MatIconModule } from '@angular/material/icon';
 import { MatFormFieldModule } from '@angular/material/form-field';
 import { MatInputModule } from '@angular/material/input';
 import { FelhasznaloService } from './shared/services/felhasznalo.service';
+import {MatCardModule} from '@angular/material/card';
 
 @Component({
   selector: 'app-root',
@@ -16,7 +17,8 @@ import { FelhasznaloService } from './shared/services/felhasznalo.service';
     RouterLink,
     MatIconModule,
     MatFormFieldModule,
-    MatInputModule
+    MatInputModule,
+    MatCardModule
   ],
   templateUrl: './app.component.html',
   styleUrl: './app.component.scss'

@@ -53,6 +53,35 @@ export class FelhasznaloService {
     this.userSubject.next(this.felhasznalo);
   }
 
+  /*deleteFelhasznalo(deleteFelhasznalo: any): void{
+    const index = FelhasznalokObject.findIndex(user => user.email === deleteFelhasznalo.email);
+    if (index !== -1) {
+      FelhasznalokObject.splice(index, 1);
+      localStorage.removeItem('felhasznaloEmail');
+      localStorage.removeItem('bejelentkezve-e');
+      localStorage.removeItem('admin-e');
+      this.isLoggedIn = false;
+      this.userSubject.next(null);
+    }
+  }*/
+
+  updateFelhasznalo(modositottFelhasznalo: any): void{
+    this.felhasznalo = modositottFelhasznalo;
+    const index = FelhasznalokObject.findIndex(user => user.email === this.felhasznalo.email);
+    if (index !== -1) {
+      FelhasznalokObject[index] = this.felhasznalo;
+      localStorage.setItem('felhasznaloEmail', this.felhasznalo.email);
+      localStorage.setItem('bejelentkezve-e', 'true');
+      localStorage.setItem('admin-e', this.felhasznalo.admin);
+      this.userSubject.next(this.felhasznalo);
+    }
+    
+  }
+
+  emailExists(email: string): boolean {
+    return FelhasznalokObject.some(user => user.email === email);
+  }
+
   createFelhasznalo(ujFelhasznalo: any): Observable<any>{
     FelhasznalokObject.push(ujFelhasznalo);
     return of({success: true});

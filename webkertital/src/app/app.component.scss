@@ -91,6 +91,14 @@ body {
     justify-content: center;
     align-items: center;
   }
+  .menu-button-container mat-icon{
+    color:white;
+    transition: 0.3s;
+    text-decoration: none;
+  }
+  .menu-button-container mat-icon:hover{
+    color: #ff9966;
+  }
   
   #menu-toggle {
     display: none;
